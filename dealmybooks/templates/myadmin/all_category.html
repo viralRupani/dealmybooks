@@ -1,0 +1,46 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %} Manage Category {% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Manage Category</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>cat_id</th>
+                            <th>Category</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in categories %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.category}}</td>
+                            
+                            <td> <a href="/myadmin/update_category/{{i.id}}"  class="fa fa-edit"></a></td>
+                            <td> <a href="/myadmin/delete_category/{{i.id}}" style="color: rgb(245, 40, 40);" class="fa fa-trash" style="text-decoration: none"></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+ 
+
+{% endblock body %}

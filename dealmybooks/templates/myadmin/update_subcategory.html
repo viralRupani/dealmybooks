@@ -1,0 +1,51 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %}Update Subcategory{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Add Subcategory</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div class="container">
+          <form action="/myadmin/updated_subcategory/{{subcategories.id}}" method="post" >
+            {% csrf_token %}
+            <div class="input-group mb-3 ">
+              <table>
+                <tr>
+                  <td>
+                    Select Category
+                  </td>
+                  <td>
+                    <select class="form-control col-12" id="category" name="category">
+                      {% for i in categories %}
+                        <option>{{i.category}}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                </tr> 
+                <tr>
+                  <td>
+                    Subcategory
+                  </td>
+                  <td>
+                    <input type="text" id="subcategory" name="subcategory" placeholder="Enter Subcategory" class="form-control" value="{{subcategories.subcategory}}">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <button class="btn btn-primary" id="submit" name="submit" >Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+
+
+  {% endblock body %}

@@ -1,0 +1,51 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %} Add Category {% endblock title %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4 ">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="/myadmin/post_category/" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>
+                                Category Name
+                            </td>
+                            <td>
+                                <input type="text" name="category" id="category" placeholder="Enter Category" class="form-control">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><button class="btn btn-primary">Add</button></td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<!-- /.container-fluid -->
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

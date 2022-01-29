@@ -1,0 +1,40 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %} update Category {% endblock title %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="/myadmin/updated_category/{{update_item.id}}" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>
+                                Category Name
+                            </td>
+                            <td>
+                                <input type="text" name="category" id="category" placeholder="Enter Category" class="form-control" value="{{update_item.category}}">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><button type="submit" id="submit" name="submit" class="btn btn-primary" >UPDATE</button></td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+{% endblock body %}

@@ -1,0 +1,76 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Give Feedback{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="breadcrumbs-area mb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="/user/home/">Home</a></li>
+                        <li><a href="/user/feedback/" class="active">feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'user/img/feedback.png' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="/user/post_feedback/" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="my-3">
+            
+          <h4 class="mb-3">How was Your Experience?</h4>
+            <div class="form-check">
+              <input id="bad" name="ratings" type="radio" class="form-check-input"  required>
+              <label class="form-check-label" for="bad">Bad</label>
+            </div>
+            <div class="form-check">
+              <input id="notbad" name="ratings" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="notbad">Not Bad</label>
+            </div>
+            <div class="form-check">
+              <input id="good" name="ratings" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="good">Good</label>
+            </div>
+            <div class="form-check">
+              <input id="superb" name="ratings" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="superb">Superb</label>
+            </div>
+            <div class="form-check">
+              <input id="exelent" name="ratings" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="exelent">Exelent</label>
+            </div>
+          </div>
+      
+        <div class="mb-3 col-8">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="user@mail.com"
+                name="email">
+        </div>
+        <div class="mb-3 col-8">
+            <label for="feedback" class="form-label">Feedback</label>
+            <textarea class="form-control d-flex justify-content-center" id="feedback" rows="3" name="feedback"
+                placeholder="Give us Feedback."></textarea>
+                <div class="d-flex justify-content-center pt-3 pb-50">
+                    <button type="submit" class="btn btn-outline-warning d-flex " id="buttton" value="button">Submit</button>
+                </div>
+        </div>
+      
+    </div>
+</form>
+
+{% endblock body %}

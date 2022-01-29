@@ -1,0 +1,99 @@
+{% extends 'user/base.html' %}
+
+{% block tltle %}Give a Book{% endblock tltle %}
+
+{% block body %}
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="/user/home/">Home</a></li>
+                        <li><a href="/user/Give_book/" class="active">Give a Book</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container ptb-30">
+    <div class="content-section inner-pages give-a-book">
+        <div class="row mr-0">
+            <div class="col-12 col-md-6">
+                <h1 class="mb-4">Give a Book</h1>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="hero-quote mt-2 mb-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-1"> "The Best thing to do with the Best things in life is to Give them away" </p>
+                        <span class="blockquote-footer text-right">Dorothy Day</span>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <form method="get" name="search_book" id="search_book" novalidate="novalidate"> <input type="hidden"
+                    name="q" value="Book/SearchResult"> <input type="hidden" name="search_type" value="give_book">
+                <div class="box mb-4">
+                    <div class="row m-0">
+                        <div class="col-md-8">
+                            <div class="form-group"> <label for="book_name" style="vertical-align:top;padding-top:5px;">
+                                    Enter Name of your Book </label>
+                                    <button type="button" class="tool-tip-icon"
+                                    data-toggle="tooltip" data-placement="top""> </button> 
+                                    <input type="text"
+                                    class="form-control" 
+                                    placeholder="Title Of Book" id="book_name" name="book_name"
+                                    autocomplete="off" required="required"> </div>
+                            <div class="form-group mb-0"> <input type="submit" class="btn   " style="background-color: orange;"
+                                    value="Search"> <a href="./give-a-book" class="btn text-danger">Clear</a> </div>
+                        </div>
+                        <div class="col-md-4 text-right text-md-center"> <img
+                                data-src="https://storage.googleapis.com/prod-relayread-com/static/frontend/images/flying-book.png"
+                                src="https://storage.googleapis.com/prod-relayread-com/static/frontend/images/flying-book.png"
+                                alt="image" style="max-width: 100px;" class="flying-book lazyloaded"> </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="row m-0">
+                        <div class="col-md-6">
+                            <div class="py-3">
+                                <p><strong>Follow the simple steps given below to upload the books that you want to give
+                                        out:</strong></p>
+                                <ul class="p-0 mb-3 content-list">
+                                    <li class="ml-3 lazyloaded">Enter your book's title, author or ISBN</li>
+                                    <li class="ml-3 lazyloaded">Select your book title &amp; cover from the displayed
+                                        books, OR</li>
+                                    <li class="ml-3 lazyloaded">If you don’t see your book in the displayed list, enter
+                                        your book manually</li>
+                                    <li class="ml-3 lazyloaded">Fill in the required details and hit ‘Add this Book’
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="page-intro">
+                                <p>Books often find little use and respect once you have read them through. And one is
+                                    often left wondering how to best utilize such books. So here is your opportunity -
+                                    you can sell books that you have read by simply uploading those. Wait for a buyer to
+                                    choose your book, earn Relay Points for the books that you give out. Use those
+                                    points to order books of your choice from your fellow RelayRead members.</p>
+                                <p>Nothing can match the happiness of sharing your treasured books with others, who
+                                    would love reading them as much as you did!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center"> <img class=" lazyloaded"
+                                data-src="https://storage.googleapis.com/prod-relayread-com/static/images/give-a-book.png"
+                                src="https://storage.googleapis.com/prod-relayread-com/static/images/give-a-book.png"
+                                alt="image" style="max-height:400px;"> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>$(document).ready(function () {
+            $("#search_book").validate({ rules: { isbn: { digits: true, minlength: function (element) { if ($("input[name=isbn]").val().length <= 10) { return 10; } else return 13; }, maxlength: function (element) { if ($("input[name=isbn]").val().length <= 10) { return 10; } else return 13; } }, book_name: { required: true } }, messages: { isbn: { digits: "ISBN should be either 10 or 13 digit number", minlength: "ISBN should be either 10 or 13 digit number", maxlength: "ISBN should be either 10 or 13 digit number", } }, errorElement: 'label', errorPlacement: function (error, element) { error.addClass('invalid-feedback'); element.closest('.form-group').append(error); }, highlight: function (element, errorClass, validClass) { }, unhighlight: function (element, errorClass, validClass) { }, }); $("#search_book").submit(function (event) { event.preventDefault(); var title_val = $("#book_name").val(); var root_path = 'https://relayread.com/'; if (title_val != '') { top.location.href = root_path + 'givebooks/search_type/give_book/book_name/' + title_val; } });
+        });</script>
+</div>
+
+
+{% endblock body %}

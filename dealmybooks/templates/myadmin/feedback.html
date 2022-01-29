@@ -1,0 +1,23 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %} Feedback {% endblock title %}
+{% block body %}
+<div class="container">
+  {% for i in feedbacks  %}
+  <div class="row row-cols-1 row-cols-md-10 g-4 pb-3">
+    <div class="col">
+      <div class="card h-100" style="box-shadow: 5px 5px 10px lightblue">
+        <div class="card-body" >
+          <h5 class="card-title">{{i.email}}</h5>
+          <hr/>
+          <p class="card-text">{{i.feedback}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock body %}

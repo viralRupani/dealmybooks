@@ -1,0 +1,41 @@
+{% extends 'myadmin/basehtml/base.html' %}
+
+{% block title %} Manage Subcategory {% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Manage Subcategory</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Category</th>
+                            <th>Subcategory</th>         
+                            <th>update</th>
+                            <th>delete</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           {% for subc in scates %}
+                           <tr>
+                               <td>{{subc.id}}</td>
+                               <td>{{subc.category}}</td>
+                               <td>{{subc.subcategory}}</td>
+                               <td><a href="/myadmin/update_subcategory/{{subc.id}}" class="fa fa-edit"></a></td>
+                               <td><a href="/myadmin/delete_subcategory/{{subc.id}}" style="color: rgb(245, 40, 40);" class="fa fa-trash" style="text-decoration: none"></a></td>
+                            </tr>
+                            {% endfor %}
+                       </tbody>
+                   </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}
