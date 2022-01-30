@@ -17,9 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from myadmin import views
 urlpatterns = [
-   path("", views.login, name="longin"),
+   path("", views.login, name="login"),
    path("dashboard/", views.dashboard, name="dashboard"),
-   path("logout/", views.logout, name="logout"),
    path("add_category/", views.Add_category, name="add_category"),
    path("post_category/", views.post_category, name="post_category"),
    path("add_subcategory/", views.Subcategory, name="add_subcategory"),
@@ -36,4 +35,5 @@ urlpatterns = [
    path("update_subcategory/<int:id>", views.update_subcategory, name="update_subcategory"),
    path("updated_subcategory/<int:id>", views.updated_subcategory, name="updated_subcategory"),
    path("feedback/", views.feedback, name="feedback"),
+   path("logout/", views.logout, name="logout"),
 ]

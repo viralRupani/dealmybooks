@@ -2,7 +2,6 @@
 X-templates-X/
 static/
 
-#django
 # Django #
 *.log
 *.pot
