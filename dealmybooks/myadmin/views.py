@@ -3,21 +3,23 @@ from django.shortcuts import render, redirect
 from user.models import *
 from myadmin.models import *
 
-
-# Create your views here.
 def dashboard(request):
 	return render(request, "myadmin/home.html")
 
 def login(request):
 	return render(request, "myadmin/login.html")
 
+
+# Users
 def user(request):
 	return render(request, "myadmin/user.html", {"rows" : Register.objects.all()})
 
 def delete_user(request, id):
 	Register.objects.get(id=id).delete()
 	return redirect("/myadmin/user/")
-			
+
+
+# Categories	
 def Add_category(request):	
 	return render(request, "myadmin/add_category.html")
 
@@ -42,6 +44,8 @@ def delete_category(request, id):
 	AddCategory.objects.get(id=id).delete()
 	return redirect("/myadmin/all_category/")
 
+
+# Subcategory
 def Subcategory(request):
 	return render(request, "myadmin/add_subcategory.html", {"categories": AddCategory.objects.all()})
 
@@ -53,7 +57,10 @@ def all_subcategory(request):
 	return render(request, "myadmin/all_subcategory.html",{"scates": AddSubCategory.objects.all()})
 
 def update_subcategory(request, id):
-	return render(request, "myadmin/update_subcategory.html", {"subcategories": AddSubCategory.objects.get(id=id), "categories": AddCategory.objects.all()})
+	categories = AddCategory.objects.all()
+	subcategories = AddSubCategory.objects.get(id=id)
+	context = {"subcategories": subcategories, "categories": categories}
+	return render(request, "myadmin/update_subcategory.html", context)
 
 def updated_subcategory(request, id):
 	AddSubCategory.objects.update_or_create(id=id, defaults = {"category": request.POST['category'], "subcategory": request.POST['subcategory']})
@@ -63,12 +70,16 @@ def delete_subcategory(request, id):
 	AddSubCategory.objects.get(id=id).delete()
 	return redirect("/myadmin/all_subcategory/")
 
+
+# Orders
 def orders(request):
 	return render(request, "myadmin/orders.html")
 
+# Feedback
 def feedback(request):
 	return render(request, "myadmin/feedback.html", { "feedbacks": Feedback.objects.all() })
 	
+# Logout
 def logout(request):
 	return redirect("/myadmin/")
 

@@ -23,7 +23,7 @@
                   <td>
                     <select class="form-control col-12" id="category" name="category">
                       {% for i in categories %}
-                        <option>{{i.category}}</option>
+                        <option {% if subcategories.category == i.category %} selected {% endif %}> {{i.category}} </option>
                       {% endfor %}
                     </select>
                   </td>

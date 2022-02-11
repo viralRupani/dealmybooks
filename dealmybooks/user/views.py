@@ -4,22 +4,18 @@ from user.models import *
 
 # Create your views here.
 def index(request):
-    """ Renders Home page. """
     context = {}
     return render(request, "user/index.html", context)
 
 def login(request):
-    """ Renders Login Page. """
     context = {}
     return render(request, "user/login.html", context)
 
 def register(request):
-    """ Renders Registration Page. """
     context = {}
     return render(request, "user/register.html", context)
 
 def user_register(request):
-    """ Post inputs to database.  """
     full_name = request.POST['full_name']
     email = request.POST['email']
     password = request.POST['password']
@@ -31,24 +27,20 @@ def user_register(request):
     return redirect("/user/register/")
 
 def cart(request):
-    """ Renders cart Page. """
     context = {}
     return render(request, "user/cart.html", context)
 
 def shop(request):
-    """ Remders Shopping Page. """
     context = {}
     return render(request, "user/shop.html", context)
 
 def wishlist(request):
-    """ Renders Wishlist Page. """
     context = {}
     return render(request, "user/wishlist.html", context)
 
 
 
 def _404(request):
-    """ Renders Error Page. """
     context = {}
     return render(request, "user/404.html", context)
 
@@ -82,27 +74,22 @@ def Billing_Details(request):
     return redirect("/user/checkout/")
 
 def my_account(request):
-    """ Renders account Page. """
     context = {}
     return render(request, "user/my_account.html", context)
 
 def contact_us(request):
-    """ Renders Contact Page. """
     context = {}
     return render(request, "user/contact.html", context)
 
 def about(request):
-    """ Renders About Page. """
     context = {}
     return render(request, "user/about.html", context)
 
 def give_book(request):
-    """ Renders Give Book Page. """
     context = {}
     return render(request, "user/giveBook.html", context)
 
 def feedback(request):
-    """ Renders Get Book Page. """
     context = {}
     return render(request, "user/feedback.html", context)
 
